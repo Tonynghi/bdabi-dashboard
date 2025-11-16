@@ -1,6 +1,6 @@
-# BDABI Dashboard
+# Big Data Analysis and Business Intelligence Dashboard
 
-This project is a simple Streamlit dashboard application. It demonstrates how to create a basic web app using Streamlit and Python. The app displays a title and a greeting message.
+This project is a simple Streamlit dashboard application for Big Data Analysis and Business Intelligence assignment of group 6. It demonstrates how to create a basic web app using Streamlit and Python. The app displays visualizes business intelligence data through an intuitive dashboard to uplift e-commerce .
 
 ## How to Run
 
@@ -19,3 +19,9 @@ This project is a simple Streamlit dashboard application. It demonstrates how to
 
 - `app.py`: Main Streamlit application file.
 - `README.MD`: Project documentation and instructions.
+
+## Authors
+
+- Nghiem Pham Vy Nghi
+- Pham Huynh Bao Dai
+- Le Nhan Van
