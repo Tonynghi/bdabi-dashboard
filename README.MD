@@ -9,6 +9,17 @@ This project is a simple Streamlit dashboard application for Big Data Analysis a
    ```powershell
    pip install streamlit
    ```
+3. Add required configuration files. Since we have connection to cloud storage, the key config is needed in order to make connection. Make sure you have these files in your project since they are secret files and will be ignored by Git.
+
+```bash
+bdabi-dashboar
+├──.streamlit
+│   └──secrets.toml
+├── gcs-key.json
+```
+
+If you don't have them yet. Please contact us to get the files.
+
 3. Run the application using the following command in your project directory:
    ```powershell
    streamlit run app.py
