@@ -23,9 +23,12 @@ def render_dashboard():
 
     with tab_sales_performance:
         st.header("Sales Performance")
-        col1, col2 = st.columns(2)
-        sales_performance.render_revenue_overtime(col1)
-        sales_performance.render_product_partition(col2)
+        col_revenue_overtime, col_product_distribution = st.columns(2)
+        sales_performance.render_revenue_overtime(col_revenue_overtime)
+        sales_performance.render_product_partition(col_product_distribution)
+        
+        col_product_leaderboard = st.container()
+        sales_performance.render_product_leaderboard(col_product_leaderboard)
 
 
 
