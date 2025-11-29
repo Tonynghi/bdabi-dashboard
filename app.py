@@ -1,6 +1,7 @@
 import streamlit as st
 
 from features import sales_performance;
+from features import sales_forecasting;
 
 st.set_page_config(
     page_title="Business Intelligence Dashboard",
@@ -30,6 +31,13 @@ def render_dashboard():
         col_product_leaderboard = st.container()
         sales_performance.render_product_leaderboard(col_product_leaderboard)
 
+    with tab_sales_forecasting:
+        st.header("Sales Forecasting")
+        col_revenue_forecasting = st.container()
+        sales_forecasting.render_revenue_forecasting(col_revenue_forecasting)
+
+        col_seasonal_segmentation = st.container()
+        sales_forecasting.render_seasonal_segmentation(col_seasonal_segmentation)
 
 
 render_dashboard()
