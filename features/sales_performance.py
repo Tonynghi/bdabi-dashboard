@@ -57,7 +57,8 @@ def render_revenue_overtime(column):
             .interactive()
         )
 
-        st.altair_chart(chart, width='stretch')
+        st.altair_chart(chart, use_container_width=True)
+         # st.altair_chart(pie, width='stretch')
 
 def render_product_partition(column):
     df = load_parquet_from_gcs(
@@ -118,7 +119,8 @@ def render_product_partition(column):
             .properties(width=400, height=400)
         )
 
-        st.altair_chart(pie, width='stretch')
+        st.altair_chart(pie, use_container_width=True)
+        # st.altair_chart(pie, width='stretch')
 
 def render_product_leaderboard(column):
     df = load_parquet_from_gcs(
@@ -183,10 +185,10 @@ def render_product_leaderboard(column):
                 revenue_leaderboard,
                 column_config={
                     "product_category_name": "Product",
-                    "Total Revenue": st.column_config.NumberColumn("Total Revenue", format="$ %.2f"),
+                    "Total Revenue": st.column_config.NumberColumn("Total Revenue", format="$ %.2f")
                 },
                 hide_index=True,
-                width='stretch'
+                use_container_width=True
             )
 
         with col_vol:
@@ -195,8 +197,8 @@ def render_product_leaderboard(column):
                 volume_leaderboard,
                 column_config={
                     "product_category_name": "Product",
-                    "Quantity Sold": st.column_config.NumberColumn("Quantity Sold", format="%d units"),
+                    "Quantity Sold": st.column_config.NumberColumn("Quantity Sold", format="%d")
                 },
                 hide_index=True,
-                width='stretch'
+                use_container_width=True
             )
