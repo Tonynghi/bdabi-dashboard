@@ -45,7 +45,9 @@ def generate_fraud_data(df: pd.DataFrame):
 
 @st.cache_resource(ttl=3600)
 def load_fraud_data():
-    client = storage.Client()
+    client = storage.Client.from_service_account_info(
+        st.secrets["gcp_service_account"]
+    )
     bucket = client.bucket(MODEL_BUCKET)
     blob = bucket.blob(FRAUD_BLOB)
 

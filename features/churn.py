@@ -144,7 +144,9 @@ def train_churn_model(df):
     joblib.dump(explainer, os.path.join(OUT_DIR, "shap_explainer.pkl"))
     data[['customer_unique_id'] + X.columns.tolist() + ['churn']].to_parquet(os.path.join(OUT_DIR, "customer_features_full.parquet"), index=False)
 
-    client = storage.Client()
+    client = storage.Client.from_service_account_info(
+        st.secrets["gcp_service_account"]
+    )
     bucket = client.bucket(MODEL_BUCKET)
     for file_name in ["churn_model_best.pkl", "shap_explainer.pkl", "customer_features_full.parquet"]:
         local_path = os.path.join(OUT_DIR, file_name)
@@ -156,7 +158,9 @@ def train_churn_model(df):
 @st.cache_resource(ttl=3600)
 def load_churn_assets():
     try:
-        client = storage.Client()
+        client = storage.Client.from_service_account_info(
+            st.secrets["gcp_service_account"]
+        )
         bucket = client.bucket(MODEL_BUCKET)
         blobs_exist = all(bucket.blob(p).exists() for p in MODEL_PATHS.values())
         if blobs_exist:
