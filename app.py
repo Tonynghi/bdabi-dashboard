@@ -3,6 +3,8 @@ import streamlit as st
 from features import sales_performance;
 from features import sales_forecasting;
 from features import customer_behaviours;
+from features import delivery;
+from features import geographic_insight;
 
 st.set_page_config(
     page_title="Business Intelligence Dashboard",
@@ -49,6 +51,33 @@ def render_dashboard():
 
         col_seasonal_segmentation = st.container()
         sales_forecasting.render_seasonal_segmentation(col_seasonal_segmentation)
+
+    with tab_geographic_insights:
+        st.header("Geographic Insights")
+        col_sales_region, col_customer_dist = st.columns(2)
+        geographic_insight.render_sales_by_region(col_sales_region)
+        geographic_insight.render_customer_distribution(col_customer_dist)
+
+        col_seller_perf = st.container()
+        geographic_insight.render_seller_performance_by_region(col_seller_perf)
+
+        col_city_analysis = st.container()
+        geographic_insight.render_city_level_analysis(col_city_analysis)
+
+        col_product_pref = st.container()
+        geographic_insight.render_regional_product_preferences(col_product_pref)
+
+    with tab_delivery:
+        st.header("Delivery Performance")
+        col_delivery_perf, col_delay_analysis = st.columns(2)
+        delivery.render_delivery_performance(col_delivery_perf)
+        delivery.render_delivery_delay_analysis(col_delay_analysis)
+
+        col_delivery_state = st.container()
+        delivery.render_delivery_by_state(col_delivery_state)
+
+        col_freight = st.container()
+        delivery.render_freight_analysis(col_freight)
 
 
 render_dashboard()
