@@ -25,6 +25,7 @@ selected_tab = st.sidebar.radio("Select dashboard tab:", tab_names)
 
 if selected_tab == "Sales Performance":
     st.header("Sales Performance")
+
     col1, col2 = st.columns(2)
     sales_performance.render_revenue_overtime(col1)
     sales_performance.render_product_partition(col2)
@@ -35,6 +36,9 @@ elif selected_tab == "Sales Forecasting":
         col_key_forecast_metrics,col_revenue_forecasting = st.columns([1,3])
         sales_forecasting.render_revenue_forecasting(col_revenue_forecasting)
         sales_forecasting.render_key_forecast_metris(col_key_forecast_metrics)
+
+        col_seasonal_segmentation = st.container()
+        sales_forecasting.render_seasonal_segmentation(col_seasonal_segmentation)
 
 elif selected_tab == "Customer Behaviours":
         st.header("Customer Behaviours")

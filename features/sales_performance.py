@@ -3,6 +3,15 @@ import pandas as pd
 import altair as alt
 from helpers.gcs_loader import load_parquet_from_gcs
 
+def render_df(column):
+    df = load_parquet_from_gcs(
+        bucket_name="bdabi-group7",
+        blob_name="preprocessed/preprocessed.parquet"
+    )
+    
+    with column:
+        st.dataframe(df)
+
 def render_revenue_overtime(column):
     df = load_parquet_from_gcs(
         bucket_name="bdabi-group7",
